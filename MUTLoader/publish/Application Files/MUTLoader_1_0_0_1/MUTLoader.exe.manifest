@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MUTLoader.exe" version="1.0.0.1" publicKeyToken="913da5290f510c69" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MUTLoader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MUTLoader.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUTLoader.exe" size="18368">
+      <assemblyIdentity name="MUTLoader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>5HJewKp1pagzJ2t8H6G5o3+dxTAq2sEKmGBE0AJeskc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MUTLoader.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=EJF\jantetomaso" issuerKeyHash="7ad4847fc7d29052513337967f14cd98b9d3729f" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>R2B+AWxO/oaz7hUstofYcpzRWiRDI3eAQdVEaUwNVDU=</DigestValue></Reference></SignedInfo><SignatureValue>ZjJNqAgTZcG+RNpkXsFVzK+cuD6HDoGJeyYgrNgSxZrcOzB3Mm5sZDMOFM+lIqXqFNbq5FGm1tSaHMAC6KS9zgT0g1M+IIl37xy0AuRE5Bf5hKVuz0K9sU47k3ylCT1KZyEIcTp7x4MjFqIebi/k4CUlGlbGUykPeOwJHugA7R8=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>qKcNNdItlr6u50jNbI7xTRtmUs7dd5jJpQOpmSY4E1NZh5qU3C3CtugpMce70Gf61BB+DIeIaswcuh7LxNV7rlg8tEcZ/Eti/+ajyx0ql6RGsBhxvr1+2lauvSRj6eKBCGE1GDbZWyLdlvY3sfyDc50aAUS8ccVxEiqbJTt/9jc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="35540d4c6944d54180772343245ad19c72d887b62c15eeb386fe4e6c017e6047" Description="" Url=""><as:assemblyIdentity name="MUTLoader.exe" version="1.0.0.1" publicKeyToken="913da5290f510c69" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=EJF\jantetomaso</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>F2Ur8lxrHslWo2lV80GkIi0qTusABWZ1CXkB2G/EMHM=</DigestValue></Reference></SignedInfo><SignatureValue>HHymnMait2iqPvQQ7uU18w2Yrjj8rpOftaQsM+IcBgsryOsDb+9px43aPr6bcfvuD740QqnlmCtal0Vz+InHbWvZe7L2cGFMfOujTo4N2Wj+4zSOJmKv21o1PFkwCkm2DqVn3N93k3VTTGy6Gs/nnS2d4OatqGzoM3hJE+f9MuA=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>qKcNNdItlr6u50jNbI7xTRtmUs7dd5jJpQOpmSY4E1NZh5qU3C3CtugpMce70Gf61BB+DIeIaswcuh7LxNV7rlg8tEcZ/Eti/+ajyx0ql6RGsBhxvr1+2lauvSRj6eKBCGE1GDbZWyLdlvY3sfyDc50aAUS8ccVxEiqbJTt/9jc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB1TCCAT6gAwIBAgIQToBVxJaW+6tEHKPAYvUcWjANBgkqhkiG9w0BAQsFADApMScwJQYDVQQDHh4ARQBKAEYAXABqAGEAbgB0AGUAdABvAG0AYQBzAG8wHhcNMTcwNjAyMjA1NTA5WhcNMTgwNjAzMDI1NTA5WjApMScwJQYDVQQDHh4ARQBKAEYAXABqAGEAbgB0AGUAdABvAG0AYQBzAG8wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKinDTXSLZa+rudIzWyO8U0bZlLO3XeYyaUDqZkmOBNTWYealNwtwrboKTHHu9Bn+tQQfgyHiGrMHLoey8TVe65YPLRHGfxLYv/mo8sdKpekRrAYcb69ftpWrr0kY+nigQhhNRg22Vsi3Zb2N7H8g3OdGgFEvHHFcRIqmyU7f/Y3AgMBAAEwDQYJKoZIhvcNAQELBQADgYEAYmdBgkpjahh0600sh8usxK85GtR1fjni+YcLNoI3fC4DD7oVG4eSniONRjz2C8YcKHdxTmJBBiFVKap4K+4bVsELFrsEuizvD0RiYt+nHmcGnHsa7ZxG4wpc9uQMg8uFYkQMYW4GRM/DudRHEAr28GjAxNRH7KsuHAt67ajMc5M=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

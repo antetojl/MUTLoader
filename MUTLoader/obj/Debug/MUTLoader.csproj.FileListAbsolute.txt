@@ -1,0 +1,13 @@
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\bin\Debug\MUTLoader.exe.config
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\bin\Debug\MUTLoader.exe
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\bin\Debug\MUTLoader.pdb
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.csprojResolveAssemblyReference.cache
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\PlayerManager.baml
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\PlayerManager.g.cs
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\App.g.cs
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader_MarkupCompile.cache
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.g.resources
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.Properties.Resources.resources
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.csproj.GenerateResource.Cache
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.exe
+c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.pdb
