@@ -30,12 +30,18 @@ namespace MUTLoader
             }
             catch (Exception ex)
             {
+                // ignored
             }
         }
 
         private void ExecuteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Start(players);
+            while (true)
+            {
+                Start(players);
+                Thread.Sleep(10000);
+            }
+            
         }
 
         private void AddPlayerButton_OnClick(object sender, RoutedEventArgs e)

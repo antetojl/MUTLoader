@@ -67,7 +67,7 @@ namespace MUTLoader
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error retrieving player ID: {0}", ID), "Error");
+                MessageBox.Show(string.Format("Error retrieving player ID: {0} ({1} {2})", ID, OVR, name), "Error");
             }
             
         }
