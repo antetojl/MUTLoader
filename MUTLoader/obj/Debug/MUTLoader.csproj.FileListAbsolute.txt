@@ -11,3 +11,7 @@ c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\o
 c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.csproj.GenerateResource.Cache
 c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.exe
 c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.pdb
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Debug\MUTLoader.exe.manifest
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Debug\MUTLoader.application
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.exe.manifest
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Debug\MUTLoader.application
