@@ -41,7 +41,7 @@ namespace MUTLoader
             var regexPattern = new Regex(@"\d\d?\d?\d?\d?\d?\d?\d?");
             var files = Directory.GetFiles(pathDownload, string.Format("*{0}*", ID));
 
-            var s = "fillerfillerfillerfillerfillerfillerfillerfillerfillerfillerfillerfillerfiller";
+            var s = "";
             try
             {
                 s = File.ReadAllText(files[0]);
@@ -82,7 +82,7 @@ namespace MUTLoader
             PriceCheck();
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return string.Format("{0} OVR {1}, ID = {2}, Max Price = {3:n0}", OVR, name, ID, MaxPrice);
         }

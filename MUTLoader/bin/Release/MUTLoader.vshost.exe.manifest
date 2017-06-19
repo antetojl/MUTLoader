@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUTLoader.exe" size="21440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUTLoader.exe" size="22464">
       <assemblyIdentity name="MUTLoader" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>O2GMOW9QlB2WYBjAJ3JgRr09J27rpG+Rn1WuRE/UiwY=</dsig:DigestValue>
+        <dsig:DigestValue>e5rS9Kv3opzODVrQ+zcoQhNF3UZLaAMm1QaII634TJs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

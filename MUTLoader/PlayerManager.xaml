@@ -4,96 +4,133 @@
         Title="MUTLoader" Height="300" Width="350"
         WindowStartupLocation="CenterScreen"
         Closed="PlayerManager_OnClosed">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".50*"></ColumnDefinition>
-            <ColumnDefinition Width=".50*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+    <TabControl>
+        <TabItem Header ="Sniper">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
 
-        </Grid.RowDefinitions>
-        <!--Start text in window-->
-        <TextBlock Grid.Column="0" Grid.Row="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="5,5,5,5"
-                   Text="OVR:"/>
+                </Grid.RowDefinitions>
+                <!--Start text in window-->
+                <TextBlock Grid.Column="0" Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="5,5,5,5"
+                           Text="OVR:"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="1"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="5,5,5,5"
-                   Text="Name:"/>
+                <TextBlock Grid.Column="0" Grid.Row="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="5,5,5,5"
+                           Text="Name:"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="2"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="5,5,5,5"
-                   Text="ID Number:"/>
+                <TextBlock Grid.Column="0" Grid.Row="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="5,5,5,5"
+                           Text="ID Number:"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="5,5,5,5"
-                   Text="Max Price:"/>
+                <TextBlock Grid.Column="0" Grid.Row="3"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="5,5,5,5"
+                           Text="Max Price:"/>
 
-        <TextBox Grid.Column="1" Grid.Row="0" x:Name="OVRBox"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Margin="5, 5, 5, 5" Width="38"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="OVRBox"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="5, 5, 5, 5" Width="38"/>
 
-        <TextBox Grid.Column="1" Grid.Row="1" x:Name="NameBox"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Margin="5, 5, 5, 5" Width="100"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="NameBox"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="5, 5, 5, 5" Width="100"/>
 
-        <TextBox Grid.Column="1" Grid.Row="2" x:Name="IDBox"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Margin="5, 5, 5, 5" Width="69"/>
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="IDBox"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="5, 5, 5, 5" Width="69"/>
 
-        <TextBox Grid.Column="1" Grid.Row="3" x:Name="PriceBox"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Margin="5, 5, 5, 5" Width="80"/>
+                <TextBox Grid.Column="1" Grid.Row="3" x:Name="PriceBox"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="5, 5, 5, 5" Width="80"/>
 
-        <Button Grid.Column="1" Grid.Row="4" x:Name="AddPlayerButton"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="5, 5, 5, 5" Width="60" Height="20"
-                Click="AddPlayerButton_OnClick">Add</Button>
+                <Button Grid.Column="1" Grid.Row="4" x:Name="AddPlayerButton"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="5, 5, 5, 5" Width="60" Height="20"
+                        Click="AddPlayerButton_OnClick">Add</Button>
 
-        <Button Grid.Column="1" Grid.Row="5" x:Name="RemovePlayerButton"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="5, 5, 5, 5" Width="60" Height="20"
-                Click="RemovePlayerButton_OnClickPlayerButton_OnClick">Remove</Button>
+                <Button Grid.Column="1" Grid.Row="5" x:Name="RemovePlayerButton"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="5, 5, 5, 5" Width="60" Height="20"
+                        Click="RemovePlayerButton_OnClickPlayerButton_OnClick">Remove</Button>
 
-        <Button Grid.Column="0" Grid.RowSpan="2" Grid.Row="4" x:Name="ViewPlayersButton"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="5, 5, 5, 5" Width="100" Height="40"
-                Click="ViewPlayersButton_OnClick">View Players</Button>
+                <Button Grid.Column="0" Grid.RowSpan="2" Grid.Row="4" x:Name="ViewPlayersButton"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="5, 5, 5, 5" Width="100" Height="40"
+                        Click="ViewPlayersButton_OnClick">View Players</Button>
 
-        <Button Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="6" x:Name="ExecuteButton"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Width="100" Height="25" BorderBrush="BlueViolet"
-                Click="ExecuteButton_OnClick">Execute</Button>
+                <Button Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="6" x:Name="ExecuteButton"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="100" Height="25"
+                        Click="ExecuteButton_OnClick">Execute</Button>
+                
+                <Button x:Name ="StopButton"  Grid.Column="1" Grid.Row="6" 
+                        Content="Stop"
+                        Width="35"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="StopButton_OnClickButtonClick" Margin="0"></Button>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header ="Settings">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Button x:Name ="DelayButton" Grid.Column="0" Grid.Row="0"
+                        Content="Change refresh rate"
+                        Width="Auto"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="DelayButton_OnClick"></Button>
+
+                <Button x:Name ="HelpButton"  Grid.Column="1" Grid.Row="0" 
+                        Content="Help"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="HelpButtonClick"></Button>
+            </Grid>
+        </TabItem>
         
-        <Button x:Name ="HelpButton"  Grid.Column="0" Grid.Row="6" 
-                Content="Help"
-                Width="35"
-                HorizontalAlignment="Left"
-                Margin="5"
-                Height="25"
-                Click="HelpButtonClick"></Button>
-    </Grid>
+    </TabControl>
+    
 </Window>
