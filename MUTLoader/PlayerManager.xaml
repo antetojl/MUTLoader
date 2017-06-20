@@ -66,17 +66,21 @@
                          VerticalAlignment="Center"
                          Margin="5, 5, 5, 5" Width="80"/>
 
-                <Button Grid.Column="1" Grid.Row="4" x:Name="AddPlayerButton"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Margin="5, 5, 5, 5" Width="60" Height="20"
-                        Click="AddPlayerButton_OnClick">Add</Button>
+                <StackPanel Grid.Column="1" Grid.Row="4" Grid.RowSpan="2">
+                    <Button x:Name="AddPlayerButton"
 
-                <Button Grid.Column="1" Grid.Row="5" x:Name="RemovePlayerButton"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Margin="5, 5, 5, 5" Width="60" Height="20"
-                        Click="RemovePlayerButton_OnClickPlayerButton_OnClick">Remove</Button>
+                            Margin="5, 5, 5, 5" Width="60" Height="20"
+                            Click="AddPlayerButton_OnClick">Add</Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="ModifyPlayerButton"
+                            Margin="5, 5, 5, 5" Width="60" Height="20"
+                            Click="ModifyPlayerButton_OnClickPlayerButton_OnClickPlayerButton_OnClick">Modify</Button>
+                    <Button x:Name="RemovePlayerButton"
+                            Margin="5, 5, 5, 5" Width="60" Height="20"
+                            Click="RemovePlayerButton_OnClickPlayerButton_OnClick">Remove</Button>
+                    </StackPanel>
+                </StackPanel>
+                
 
                 <Button Grid.Column="0" Grid.RowSpan="2" Grid.Row="4" x:Name="ViewPlayersButton"
                         HorizontalAlignment="Center"

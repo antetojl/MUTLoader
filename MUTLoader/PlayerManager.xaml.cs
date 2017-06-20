@@ -20,7 +20,7 @@ namespace MUTLoader
     {
         private bool _again;
         private static int _delay = 30000;
-        private List<PlayerInfo> _players = new List<PlayerInfo>();
+        private static List<PlayerInfo> _players = new List<PlayerInfo>();
 
         public PlayerManager()
         {
@@ -113,18 +113,19 @@ namespace MUTLoader
             stream.Close();
         }
 
-        public void RemovePlayer(int id)
+        private void RemovePlayer(int id)
         {
             var success = false;
             PlayerInfo deleted = null;
             foreach (var p in _players)
             {
-                if (p.ID == id)
+                if (p.ID != id)
                 {
-                    deleted = p;
-                    success = true;
-                    break;
+                    continue;
                 }
+                deleted = p;
+                success = true;
+                break;
             }
 
             if (success)
@@ -157,7 +158,7 @@ namespace MUTLoader
             var sb = new StringBuilder();
             foreach (var p in _players)
             {
-                sb.Append(p.ToString() + "\n");
+                sb.Append(p + "\n");
             }
             var response =
                 Interaction.InputBox(string.Format("What is the ID of the player you wish to remove? \n\n {0}", sb),
@@ -250,6 +251,82 @@ namespace MUTLoader
             else
             {
                 MessageBox.Show("Please use valid number for delay!", "Error");
+            }
+        }
+
+        private void ModifyPlayerButton_OnClickPlayerButton_OnClickPlayerButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var sb = new StringBuilder();
+            foreach (var p in _players)
+            {
+                sb.Append(p + "\n");
+            }
+            var response =
+                Interaction.InputBox(string.Format("What is the ID of the player that you want to change the max price for? \n\n {0}", sb),
+                    "Remove");
+
+            if (response.Equals(""))
+            {
+                return;
+            }
+
+            int parsed;
+            if (int.TryParse(response, out parsed))
+            {
+                ModifyPlayer(parsed);
+            }
+
+            else
+            {
+                MessageBox.Show("Please use a valid ID!", "Error");
+            }
+        }
+
+        private static void ModifyPlayer(int id)
+        {
+            var success = false;
+            PlayerInfo modified = null;
+            foreach (var p in _players)
+            {
+                if (p.ID != id)
+                {
+                    continue;
+                }
+                modified = p;
+                success = true;
+                break;
+            }
+
+            if (success)
+            {
+                var result =
+                    Interaction.InputBox(string.Format("{0} {1} current max price is {2:n0}.  What price should this be changed to? Do not add commas.",
+                                        modified.OVR, modified.name, modified.MaxPrice),"Change price");
+                if (result == "")
+                {
+                    return;
+                }
+
+                int parsed;
+                if (int.TryParse(result, out parsed) && int.Parse(result) >= 0)
+                {
+                    parsed = int.Parse(result);
+                    _players.Remove(modified);
+                    modified.MaxPrice = parsed;
+                    _players.Add(modified);
+                    MessageBox.Show(
+                        string.Format("Modified {1} {2} price to {0:n0}!", modified.MaxPrice, modified.OVR, modified.name));
+                }
+
+                else
+                {
+                    MessageBox.Show("Please use a valid price!", "Error");
+                }
+            }
+
+            else
+            {
+                MessageBox.Show(string.Format("Player with ID {0} not found!", id), "Error");
             }
         }
     }
