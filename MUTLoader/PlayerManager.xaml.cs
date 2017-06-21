@@ -42,6 +42,7 @@ namespace MUTLoader
         private void ExecuteButton_OnClick(object sender, RoutedEventArgs e)
         {
             _again = true;
+            ExecuteButton.IsEnabled = false;
             if (_players.Count <= 0)
             {
                 return;
@@ -220,6 +221,7 @@ namespace MUTLoader
         private void StopButton_OnClickButtonClick(object sender, RoutedEventArgs e)
         {
             _again = false;
+            ExecuteButton.IsEnabled = true;
         }
 
         private void DelayButton_OnClick(object sender, RoutedEventArgs e)
