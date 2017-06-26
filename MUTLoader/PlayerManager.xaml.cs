@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using Microsoft.VisualBasic;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace MUTLoader
 {
@@ -19,12 +22,16 @@ namespace MUTLoader
     public partial class PlayerManager
     {
         private bool _again;
+        public static bool Text = false;
         private static int _delay = 30000;
         private static List<PlayerInfo> _players = new List<PlayerInfo>();
+        public const string AccountSid = "AC48b53aeca95fd4f7cb402e949efe34cd";
+        public const string AuthToken = "15426b96c97f91a0faedb3ca5d8f8da1";
 
         public PlayerManager()
         {
             _again = false;
+            TwilioClient.Init(AccountSid, AuthToken);
             InitializeComponent();
 
             try
@@ -329,6 +336,18 @@ namespace MUTLoader
             else
             {
                 MessageBox.Show(string.Format("Player with ID {0} not found!", id), "Error");
+            }
+        }
+
+        private void TextButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var message = Text ? "Texting is currently ON.  Do you want to turn it OFF?" : "Texting is currently OFF.  Do you want to turn it ON?";
+
+            var result = MessageBox.Show(message,
+                    "Toggle Texting", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Text = !Text;
             }
         }
     }

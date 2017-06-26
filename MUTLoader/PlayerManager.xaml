@@ -157,6 +157,13 @@
                         HorizontalAlignment="Center"
                         Height="25"
                         Click="HelpButtonClick"></Button>
+
+                <Button x:Name ="TextButton"  Grid.Column="0" Grid.Row="1" 
+                        Content="Text Toggle"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="TextButton_OnClick"></Button>
             </Grid>
         </TabItem>
         

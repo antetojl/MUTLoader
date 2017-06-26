@@ -2,11 +2,16 @@
 using System.Diagnostics;
 using System.IO;
 using System.Media;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using SHDocVw;
-
+using Twilio;
+using Twilio.Clients;
+using Twilio.Http;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 namespace MUTLoader
 {
     [Serializable]
@@ -18,7 +23,7 @@ namespace MUTLoader
         public string name;
         public int OVR;
         private readonly string pathDownload;
-
+        
         public PlayerInfo(int OVR, string name, int ID, int MaxPrice)
         {
             this.OVR = OVR;
@@ -59,15 +64,29 @@ namespace MUTLoader
                 if (match.Success && int.Parse(match.Value) < MaxPrice) //Match and it's less than what I want to pay
                 {
                     var price = int.Parse(match.Value);
-                    SystemSounds.Asterisk.Play();
                     var message = string.Format("{0} {1} up for {2:n0}!  Your limit for this card is {3:n0}!",
                         OVR, name, price, MaxPrice);
-                    MessageBox.Show(message, "Good price :)");
+                    if (PlayerManager.Text)
+                    {
+                        var text = MessageResource.Create(
+                            to: new PhoneNumber("+17033419466"),
+                            from: new PhoneNumber("+17039409022"),
+                            body: message);
+
+
+                        var client = new TwilioRestClient(PlayerManager.AccountSid, PlayerManager.AuthToken);
+                        client.Request(new Request(HttpMethod.Post, message));
+                    }
+                    else
+                    {
+                        SystemSounds.Asterisk.Play();
+                        MessageBox.Show(message, "Good price :)");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error retrieving player ID: {0} ({1} {2})", ID, OVR, name), "Error");
+
             }
             
         }
