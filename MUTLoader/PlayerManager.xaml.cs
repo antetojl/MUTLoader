@@ -154,7 +154,7 @@ namespace MUTLoader
             }
         }
 
-        private void RemovePlayerButton_OnClickPlayerButton_OnClick(object sender, RoutedEventArgs e)
+        private void RemovePlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
             foreach (var p in _players)
@@ -208,7 +208,7 @@ namespace MUTLoader
                 "as well as your max price for this card and the ID you copied.  Your max price is the price that whenever this card " +
                 "is found under that price, the alert will pop-up on your screen.\n\n");
             msg.Append(
-                "Step 5: Once you have added the players you want to search for, hit execute.  The program will continuously refresh " +
+                "Step 5: Once you have added the players you want to search for, hit GO.  The program will continuously refresh " +
                 "through the items every 30 seconds (modify this value in the Settings tab).  Once a player is found below the desired " +
                 "price, the notification sound and message box will appear, containing the max price and current price of the card, as well as the OVR and name. " +
                 "The program will not loop through the players again, nor start the time between refresh, until the OK button is pressed.  Press the Stop button " +
@@ -256,7 +256,7 @@ namespace MUTLoader
             }
         }
 
-        private void ModifyPlayerButton_OnClickPlayerButton_OnClickPlayerButton_OnClick(object sender, RoutedEventArgs e)
+        private void ModifyPlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
             foreach (var p in _players)

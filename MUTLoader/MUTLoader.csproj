@@ -148,6 +148,21 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\rocket-fly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\network-firewall.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -80,6 +80,7 @@ namespace MUTLoader
             Process.Start("MUTLoadEnter.exe");
             Thread.Sleep(500); // sleep to hit enter
             PriceCheck();
+
         }
 
         public override string ToString()

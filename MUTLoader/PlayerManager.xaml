@@ -68,19 +68,36 @@
 
                 <StackPanel Grid.Column="1" Grid.Row="4" Grid.RowSpan="2">
                     <Button x:Name="AddPlayerButton"
-
-                            Margin="5, 5, 5, 5" Width="60" Height="20"
-                            Click="AddPlayerButton_OnClick">Add</Button>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="ModifyPlayerButton"
-                            Margin="5, 5, 5, 5" Width="60" Height="20"
-                            Click="ModifyPlayerButton_OnClickPlayerButton_OnClickPlayerButton_OnClick">Modify</Button>
-                    <Button x:Name="RemovePlayerButton"
-                            Margin="5, 5, 5, 5" Width="60" Height="20"
-                            Click="RemovePlayerButton_OnClickPlayerButton_OnClick">Remove</Button>
+                            Margin="5, 5, 5, 5" Width="65" Height="20"
+                            Click="AddPlayerButton_OnClick"
+                            BorderBrush="SpringGreen">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Add" VerticalAlignment="Center"></TextBlock>
+                            <Image Source="Icons/plus.png" Width="22"></Image>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="ModifyPlayerButton"
+                            Margin="5, 5, 5, 5" Width="65" Height="20"
+                            Click="ModifyPlayerButton_OnClick"
+                            BorderBrush="Yellow">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Modify" VerticalAlignment="Center"></TextBlock>
+                                <Image Source="Icons/pencil.png" Width="22"></Image>
+                            </StackPanel>
+                        </Button>
+                        
+                        <Button x:Name="RemovePlayerButton"
+                                Margin="5, 5, 5, 5" Width="65" Height="20"
+                                Click="RemovePlayerButton_OnClick"
+                                BorderBrush="Red">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Remove" VerticalAlignment="Center"></TextBlock>
+                                <Image Source="Icons/minus.png" Width="22"></Image>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
-                
 
                 <Button Grid.Column="0" Grid.RowSpan="2" Grid.Row="4" x:Name="ViewPlayersButton"
                         HorizontalAlignment="Center"
@@ -92,14 +109,22 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Width="100" Height="25"
-                        Click="ExecuteButton_OnClick">Execute</Button>
-                
-                <Button x:Name ="StopButton"  Grid.Column="1" Grid.Row="6" 
-                        Content="Stop"
-                        Width="35"
+                        Click="ExecuteButton_OnClick" BorderBrush="DeepSkyBlue">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="GO" VerticalAlignment="Center" Margin="0,0,5,0"></TextBlock>
+                        <Image Source="Icons/rocket-fly.png" Width="22"></Image>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="6" x:Name="StopButton"
+                        Width="55"
                         HorizontalAlignment="Center"
                         Height="25"
-                        Click="StopButton_OnClickButtonClick" Margin="0"></Button>
+                        Click="StopButton_OnClickButtonClick" Margin="0" BorderBrush="DarkRed">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="STOP" VerticalAlignment="Center"></TextBlock>
+                        <Image Source="Icons/network-firewall.png" Width="20"></Image>
+                    </StackPanel>
+                </Button>
 
             </Grid>
         </TabItem>
