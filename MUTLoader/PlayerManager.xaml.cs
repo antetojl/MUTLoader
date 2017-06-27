@@ -370,11 +370,11 @@ namespace MUTLoader
             _again = false;
             try
             {
-                MessageResource.Create(
+                var text = MessageResource.Create(
                         to: new PhoneNumber(MY_NUMBER),
                         from: new PhoneNumber(TWILIO_NUMBER),
                         body: TextStringBuilder.ToString());
-                MessageBox.Show(string.Format("Success!{0}{0}{1}", Environment.NewLine, TextStringBuilder));
+                MessageBox.Show(string.Format("Success!{0}{0}{1}", Environment.NewLine, text.Body));
             }
             catch (Exception ex)
             {

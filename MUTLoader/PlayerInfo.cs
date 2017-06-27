@@ -69,17 +69,19 @@ namespace MUTLoader
                     if (PlayerManager.Text)
                     {
                         PlayerManager.TextStringBuilder.Append(string.Format("{0}{1}", message, Environment.NewLine));
-                        if (ID == PlayerManager.LastPlayerInfo().ID)
-                        {
-                            PlayerManager.SendText();
                         }
-                    }
                     else
                     {
                         SystemSounds.Asterisk.Play();
                         MessageBox.Show(message, "Good price :)");
                     }
                 }
+
+                if (ID == PlayerManager.LastPlayerInfo().ID && PlayerManager.Text)
+                {
+                    PlayerManager.SendText();
+                }
+
             }
             catch (Exception ex)
             {
