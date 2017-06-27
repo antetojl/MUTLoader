@@ -68,14 +68,11 @@ namespace MUTLoader
                         OVR, name, price, MaxPrice);
                     if (PlayerManager.Text)
                     {
-                        var text = MessageResource.Create(
-                            to: new PhoneNumber("+17033419466"),
-                            from: new PhoneNumber("+17039409022"),
-                            body: message);
-
-
-                        var client = new TwilioRestClient(PlayerManager.AccountSid, PlayerManager.AuthToken);
-                        client.Request(new Request(HttpMethod.Post, message));
+                        PlayerManager.TextStringBuilder.Append(string.Format("{0}{1}", message, Environment.NewLine));
+                        if (ID == PlayerManager.LastPlayerInfo().ID)
+                        {
+                            PlayerManager.SendText();
+                        }
                     }
                     else
                     {

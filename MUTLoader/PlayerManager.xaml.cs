@@ -11,6 +11,8 @@ using System.Threading;
 using System.Windows;
 using Microsoft.VisualBasic;
 using Twilio;
+using Twilio.Clients;
+using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
@@ -21,17 +23,20 @@ namespace MUTLoader
     /// </summary>
     public partial class PlayerManager
     {
-        private bool _again;
-        public static bool Text = false;
+        private static bool _again;
+        public static bool Text;
         private static int _delay = 30000;
-        private static List<PlayerInfo> _players = new List<PlayerInfo>();
-        public const string AccountSid = "AC48b53aeca95fd4f7cb402e949efe34cd";
-        public const string AuthToken = "15426b96c97f91a0faedb3ca5d8f8da1";
+        public static List<PlayerInfo> _players = new List<PlayerInfo>();
+        private const string ACCOUNT_SID = "AC48b53aeca95fd4f7cb402e949efe34cd";
+        private const string AUTH_TOKEN = "15426b96c97f91a0faedb3ca5d8f8da1";
+        private const string TWILIO_NUMBER = "+17039409022";
+        private const string MY_NUMBER = "+17033419466";
+        public static StringBuilder TextStringBuilder = new StringBuilder();
 
         public PlayerManager()
         {
             _again = false;
-            TwilioClient.Init(AccountSid, AuthToken);
+            TwilioClient.Init(ACCOUNT_SID, AUTH_TOKEN);
             InitializeComponent();
 
             try
@@ -59,8 +64,11 @@ namespace MUTLoader
             worker.RunWorkerAsync();
         }
 
-        private void Background_Searcher(object sender, DoWorkEventArgs doWorkEventArgs)
+        private static void Background_Searcher(object sender, DoWorkEventArgs doWorkEventArgs)
         {
+            //reset string for text
+            TextStringBuilder.Clear();
+
             while (_again)
             {
                 //Lists to iterate through for PlayerInfo and Threads
@@ -115,13 +123,14 @@ namespace MUTLoader
 
         private void PlayerManager_OnClosed(object sender, EventArgs e)
         {
+            //serialize players
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("SavedPlayers.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, _players);
             stream.Close();
         }
 
-        private void RemovePlayer(int id)
+        private static void RemovePlayer(int id)
         {
             var success = false;
             PlayerInfo deleted = null;
@@ -348,6 +357,28 @@ namespace MUTLoader
             if (result == MessageBoxResult.Yes)
             {
                 Text = !Text;
+            }
+        }
+
+        public static PlayerInfo LastPlayerInfo()
+        {
+            return _players.Count > 0 ? _players[_players.Count - 1] : null;
+        }
+
+        public static void SendText()
+        {
+            _again = false;
+            try
+            {
+                MessageResource.Create(
+                        to: new PhoneNumber(MY_NUMBER),
+                        from: new PhoneNumber(TWILIO_NUMBER),
+                        body: TextStringBuilder.ToString());
+                MessageBox.Show(string.Format("Success!{0}{0}{1}", Environment.NewLine, TextStringBuilder));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Error!{0}{0}{1}", Environment.NewLine, ex));
             }
         }
     }
