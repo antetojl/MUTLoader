@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
@@ -11,8 +10,6 @@ using System.Threading;
 using System.Windows;
 using Microsoft.VisualBasic;
 using Twilio;
-using Twilio.Clients;
-using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
