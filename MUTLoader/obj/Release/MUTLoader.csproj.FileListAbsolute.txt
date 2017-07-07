@@ -15,8 +15,5 @@ c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\b
 c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\MUTLoader.application
 c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\MUTLoader.exe.manifest
 c:\users\jantetomaso\documents\visual studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\MUTLoader.application
-C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\JWT.dll
-C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Newtonsoft.Json.dll
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Twilio.dll
-C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Newtonsoft.Json.xml
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Twilio.xml

@@ -324,6 +324,13 @@
             <param name="input">Object to serialize to json</param>
             <returns>A json string</returns>
         </member>
+        <member name="M:Twilio.Converters.Serializers.DateTimeIso8601(System.Nullable{System.DateTime})">
+            <summary>
+            Produce a ISO 8601 UTC compatible string from input if possible
+            </summary>
+            <param name="input">DateTime instance to serialize to string</param>
+            <returns>A string</returns>
+        </member>
         <member name="T:Twilio.Converters.StringEnumConverter">
             <summary>
             Converts between enums and strings
@@ -5456,6 +5463,16 @@
         <member name="P:Twilio.Rest.Api.V2010.Account.Call.RecordingResource.Uri">
             <summary>
             The uri
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Api.V2010.Account.Call.RecordingResource.EncryptionType">
+            <summary>
+            The encryption_type
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Api.V2010.Account.Call.RecordingResource.EncryptionDetails">
+            <summary>
+            The encryption_details
             </summary>
         </member>
         <member name="T:Twilio.Rest.Api.V2010.Account.FetchConferenceOptions">
@@ -10840,6 +10857,16 @@
         <member name="P:Twilio.Rest.Api.V2010.Account.RecordingResource.Uri">
             <summary>
             The URI for this resource
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Api.V2010.Account.RecordingResource.EncryptionType">
+            <summary>
+            The type of encryption used for this resource.
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Api.V2010.Account.RecordingResource.EncryptionDetails">
+            <summary>
+            The encryption_details
             </summary>
         </member>
         <member name="T:Twilio.Rest.Api.V2010.Account.Recording.FetchAddOnResultOptions">
@@ -37148,6 +37175,16 @@
             The grouping_sid
             </summary>
         </member>
+        <member name="P:Twilio.Rest.Video.V1.ReadRecordingOptions.DateCreatedAfter">
+            <summary>
+            The date_created_after
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Video.V1.ReadRecordingOptions.DateCreatedBefore">
+            <summary>
+            The date_created_before
+            </summary>
+        </member>
         <member name="M:Twilio.Rest.Video.V1.ReadRecordingOptions.#ctor">
             <summary>
             Construct a new ReadRecordingOptions
@@ -37212,7 +37249,7 @@
              <param name="client"> Client to make requests to Twilio </param>
              <returns> A single instance of Recording </returns> 
         </member>
-        <member name="M:Twilio.Rest.Video.V1.RecordingResource.Read(Twilio.Rest.Video.V1.RecordingResource.StatusEnum,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Int32},System.Nullable{System.Int64},Twilio.Clients.ITwilioRestClient)">
+        <member name="M:Twilio.Rest.Video.V1.RecordingResource.Read(Twilio.Rest.Video.V1.RecordingResource.StatusEnum,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int64},Twilio.Clients.ITwilioRestClient)">
              <summary>
              read
              </summary>
@@ -37220,6 +37257,8 @@
              <param name="status"> The status </param>
              <param name="sourceSid"> The source_sid </param>
              <param name="groupingSid"> The grouping_sid </param>
+             <param name="dateCreatedAfter"> The date_created_after </param>
+             <param name="dateCreatedBefore"> The date_created_before </param>
              <param name="pageSize"> Page size </param>
              <param name="limit"> Record limit </param>
              <param name="client"> Client to make requests to Twilio </param>
@@ -37710,6 +37749,26 @@
             The room_sid
             </summary>
         </member>
+        <member name="P:Twilio.Rest.Video.V1.Room.ReadRoomRecordingOptions.Status">
+            <summary>
+            The status
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Video.V1.Room.ReadRoomRecordingOptions.SourceSid">
+            <summary>
+            The source_sid
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Video.V1.Room.ReadRoomRecordingOptions.DateCreatedAfter">
+            <summary>
+            The date_created_after
+            </summary>
+        </member>
+        <member name="P:Twilio.Rest.Video.V1.Room.ReadRoomRecordingOptions.DateCreatedBefore">
+            <summary>
+            The date_created_before
+            </summary>
+        </member>
         <member name="M:Twilio.Rest.Video.V1.Room.ReadRoomRecordingOptions.#ctor(System.String)">
              <summary>
              Construct a new ReadRoomRecordingOptions
@@ -37755,12 +37814,16 @@
              <param name="client"> Client to make requests to Twilio </param>
              <returns> A single instance of RoomRecording </returns> 
         </member>
-        <member name="M:Twilio.Rest.Video.V1.Room.RoomRecordingResource.Read(System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},Twilio.Clients.ITwilioRestClient)">
+        <member name="M:Twilio.Rest.Video.V1.Room.RoomRecordingResource.Read(System.String,Twilio.Rest.Video.V1.Room.RoomRecordingResource.StatusEnum,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int64},Twilio.Clients.ITwilioRestClient)">
              <summary>
              read
              </summary>
             
              <param name="pathRoomSid"> The room_sid </param>
+             <param name="status"> The status </param>
+             <param name="sourceSid"> The source_sid </param>
+             <param name="dateCreatedAfter"> The date_created_after </param>
+             <param name="dateCreatedBefore"> The date_created_before </param>
              <param name="pageSize"> Page size </param>
              <param name="limit"> Record limit </param>
              <param name="client"> Client to make requests to Twilio </param>
