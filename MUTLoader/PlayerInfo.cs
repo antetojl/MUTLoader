@@ -16,7 +16,6 @@ namespace MUTLoader
         public int MaxPrice;
         public string name;
         public int OVR;
-        private readonly string pathDownload;
         
         public PlayerInfo(int OVR, string name, int ID, int MaxPrice)
         {
@@ -24,8 +23,6 @@ namespace MUTLoader
             this.name = name;
             this.ID = ID;
             this.MaxPrice = MaxPrice;
-            var pathUser = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            pathDownload = Path.Combine(pathUser, "Downloads");
         }
 
         public PlayerInfo()
@@ -38,7 +35,7 @@ namespace MUTLoader
         public void PriceCheck()
         {
             var regexPattern = new Regex(@"\d\d?\d?\d?\d?\d?\d?\d?");
-            var files = Directory.GetFiles(pathDownload, string.Format("*{0}*", ID));
+            var files = Directory.GetFiles(PlayerManager.PathDownload, string.Format("*{0}*", ID));
 
             var s = "";
             try

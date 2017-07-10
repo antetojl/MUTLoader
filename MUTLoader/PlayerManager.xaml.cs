@@ -29,10 +29,13 @@ namespace MUTLoader
         private const string TWILIO_NUMBER = "+17039409022";
         private const string MY_NUMBER = "+17033419466";
         public static StringBuilder TextStringBuilder = new StringBuilder();
+        public static string PathDownload;
+        
 
         public PlayerManager()
         {
             _again = false;
+            PathDownload = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
             TwilioClient.Init(ACCOUNT_SID, AUTH_TOKEN);
             InitializeComponent();
 
