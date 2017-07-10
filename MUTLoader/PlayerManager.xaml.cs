@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.VisualBasic;
 using Twilio;
@@ -59,12 +60,10 @@ namespace MUTLoader
             {
                 return;
             }
-            var worker = new BackgroundWorker();
-            worker.DoWork += Background_Searcher;
-            worker.RunWorkerAsync();
+            Background_Searcher();
         }
 
-        private static void Background_Searcher(object sender, DoWorkEventArgs doWorkEventArgs)
+        private static async void Background_Searcher()
         {
             //reset string for text
             TextStringBuilder.Clear();
@@ -80,7 +79,7 @@ namespace MUTLoader
                     var t = new Thread(p.Connect);
                     threads.Add(t);
                     t.Start();
-                    Thread.Sleep(2500);
+                    await Task.Delay(2500);
                 }
 
                 //Join all threads at finish so program continues without hitting enter on pop-up message.
@@ -90,7 +89,7 @@ namespace MUTLoader
                 }
 
                 //Time between refresh
-                Thread.Sleep(_delay);
+                await Task.Delay(_delay);
             }
         }
 
