@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
@@ -24,7 +23,7 @@ namespace MUTLoader
         private static bool _again;
         public static bool Text;
         private static int _delay = 30000;
-        public static List<PlayerInfo> _players = new List<PlayerInfo>();
+        public static List<PlayerInfo> Players = new List<PlayerInfo>();
         private const string ACCOUNT_SID = "AC48b53aeca95fd4f7cb402e949efe34cd";
         private const string AUTH_TOKEN = "15426b96c97f91a0faedb3ca5d8f8da1";
         private const string TWILIO_NUMBER = "+17039409022";
@@ -40,23 +39,23 @@ namespace MUTLoader
             TwilioClient.Init(ACCOUNT_SID, AUTH_TOKEN);
             InitializeComponent();
 
-            try
+            //no saved players
+            if (!File.Exists("SavedPlayers.bin"))
             {
-                var fs = new FileStream("SavedPlayers.bin", FileMode.Open);
-                var formatter = new BinaryFormatter();
-                _players = (List<PlayerInfo>) formatter.Deserialize(fs);
+                return;
             }
-            catch (Exception ex)
-            {
-                // nothing to load
-            }
+
+            //players file exists
+            var fs = new FileStream("SavedPlayers.bin", FileMode.Open);
+            var formatter = new BinaryFormatter();
+            Players = (List<PlayerInfo>)formatter.Deserialize(fs);
         }
 
         private void ExecuteButton_OnClick(object sender, RoutedEventArgs e)
         {
             _again = true;
             ExecuteButton.IsEnabled = false;
-            if (_players.Count <= 0)
+            if (Players.Count < 1)
             {
                 return;
             }
@@ -74,7 +73,7 @@ namespace MUTLoader
                 var threads = new List<Thread>();
 
                 //Create threads and run program for each player
-                foreach (var p in _players)
+                foreach (var p in Players)
                 {
                     var t = new Thread(p.Connect);
                     threads.Add(t);
@@ -103,7 +102,7 @@ namespace MUTLoader
             {
                 var p = new PlayerInfo(int.Parse(OVRBox.Text), NameBox.Text, int.Parse(IDBox.Text),
                     int.Parse(PriceBox.Text));
-                _players.Add(p);
+                Players.Add(p);
                 MessageBox.Show(string.Format("Added {0} OVR {1} to search list!", OVRBox.Text, NameBox.Text),
                     "Added!");
 
@@ -125,7 +124,7 @@ namespace MUTLoader
             //serialize players
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("SavedPlayers.bin", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, _players);
+            formatter.Serialize(stream, Players);
             stream.Close();
         }
 
@@ -133,7 +132,7 @@ namespace MUTLoader
         {
             var success = false;
             PlayerInfo deleted = null;
-            foreach (var p in _players)
+            foreach (var p in Players)
             {
                 if (p.ID != id)
                 {
@@ -148,11 +147,11 @@ namespace MUTLoader
             {
                 var result =
                     MessageBox.Show(
-                        string.Format("Are you sure you want to remove {0} from the player list?", deleted.ToString()),
+                        string.Format("Are you sure you want to remove {0} from the player list?", deleted),
                         "WARNING", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    _players.Remove(deleted);
+                    Players.Remove(deleted);
                     MessageBox.Show(
                         string.Format("Removed {1} {2} with ID {0}!", deleted.ID, deleted.OVR, deleted.name));
                 }
@@ -172,7 +171,7 @@ namespace MUTLoader
         private void RemovePlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
-            foreach (var p in _players)
+            foreach (var p in Players)
             {
                 sb.Append(p + "\n");
             }
@@ -201,10 +200,10 @@ namespace MUTLoader
         {
             var sb = new StringBuilder();
 
-            foreach (var p in _players)
+            foreach (var p in Players)
             {
                 var s = string.Format("Player {0}: {1}\n",
-                    _players.IndexOf(p), p.ToString());
+                    Players.IndexOf(p), p);
                 sb.Append(s);
             }
 
@@ -274,7 +273,7 @@ namespace MUTLoader
         private void ModifyPlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
-            foreach (var p in _players)
+            foreach (var p in Players)
             {
                 sb.Append(p + "\n");
             }
@@ -303,7 +302,7 @@ namespace MUTLoader
         {
             var success = false;
             PlayerInfo modified = null;
-            foreach (var p in _players)
+            foreach (var p in Players)
             {
                 if (p.ID != id)
                 {
@@ -328,9 +327,9 @@ namespace MUTLoader
                 if (int.TryParse(result, out parsed) && int.Parse(result) >= 0)
                 {
                     parsed = int.Parse(result);
-                    _players.Remove(modified);
+                    Players.Remove(modified);
                     modified.MaxPrice = parsed;
-                    _players.Add(modified);
+                    Players.Add(modified);
                     MessageBox.Show(
                         string.Format("Modified {1} {2} price to {0:n0}!", modified.MaxPrice, modified.OVR, modified.name));
                 }
@@ -361,7 +360,7 @@ namespace MUTLoader
 
         public static PlayerInfo LastPlayerInfo()
         {
-            return _players.Count > 0 ? _players[_players.Count - 1] : null;
+            return Players.Count > 0 ? Players[Players.Count - 1] : null;
         }
 
         public static void SendText()
