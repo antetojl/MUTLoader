@@ -35,7 +35,7 @@ namespace MUTLoader
         public void PriceCheck()
         {
             var regexPattern = new Regex(@"\d\d?\d?\d?\d?\d?\d?\d?");
-            var files = Directory.GetFiles(PlayerManager.PathDownload, string.Format("*{0}*", ID));
+            var files = Directory.GetFiles(PlayerManager.PathDownload, string.Format("{0}.json", ID));
 
             var s = "";
             try
