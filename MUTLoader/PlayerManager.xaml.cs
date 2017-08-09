@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
@@ -18,39 +19,66 @@ namespace MUTLoader
     /// <summary>
     ///     Interaction logic for PlayerManager.xaml
     /// </summary>
-    public partial class PlayerManager
+    public partial class PlayerManager : INotifyPropertyChanged
     {
         private static bool _again;
+        public string TextDisplay
+        {
+            get { return Text ? "Turn texting OFF" : "Turn texting ON"; }
+        }
         public static bool Text;
         private static int _delay = 30000;
         public static List<PlayerInfo> Players = new List<PlayerInfo>();
         private const string ACCOUNT_SID = "AC48b53aeca95fd4f7cb402e949efe34cd";
         private const string AUTH_TOKEN = "15426b96c97f91a0faedb3ca5d8f8da1";
         private const string TWILIO_NUMBER = "+17039409022";
-        private const string MY_NUMBER = "+17033419466";
+        private static string _myNumber = "+17033419466";
         public static StringBuilder TextStringBuilder = new StringBuilder();
         public static string PathDownload;
-        
 
+        /// <summary>
+        ///     Interaction logic to begin link between UI and code behind.
+        /// </summary>
         public PlayerManager()
         {
             _again = false;
             PathDownload = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
             TwilioClient.Init(ACCOUNT_SID, AUTH_TOKEN);
             InitializeComponent();
+            DataContext = this;
 
-            //no saved players
-            if (!File.Exists("SavedPlayers.bin"))
+            FileStream fs;
+            var formatter = new BinaryFormatter();
+
+            //settings file exists
+            if (File.Exists("Settings.bin"))
             {
-                return;
+                fs = new FileStream("Settings.bin", FileMode.Open);
+                var settings = (List<int>) formatter.Deserialize(fs);
+                _delay = settings[0];
+                Text = settings[1] != 0;
+            }
+
+            //number file exists
+            if (File.Exists("Number.bin"))
+            {
+                fs = new FileStream("Number.bin", FileMode.Open);
+                _myNumber = (string) formatter.Deserialize(fs);
             }
 
             //players file exists
-            var fs = new FileStream("SavedPlayers.bin", FileMode.Open);
-            var formatter = new BinaryFormatter();
-            Players = (List<PlayerInfo>)formatter.Deserialize(fs);
+            if (File.Exists("SavedPlayers.bin"))
+            {
+                fs = new FileStream("SavedPlayers.bin", FileMode.Open);
+                Players = (List<PlayerInfo>) formatter.Deserialize(fs);
+            }
         }
 
+        /// <summary>
+        ///     Called when Go Button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExecuteButton_OnClick(object sender, RoutedEventArgs e)
         {
             _again = true;
@@ -62,6 +90,9 @@ namespace MUTLoader
             Background_Searcher();
         }
 
+        /// <summary>
+        ///     Work around to constantly search for players but not to freeze the UI.
+        /// </summary>
         private static async void Background_Searcher()
         {
             //reset string for text
@@ -92,6 +123,11 @@ namespace MUTLoader
             }
         }
 
+        /// <summary>
+        ///     Called when Add button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddPlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             int parsed;
@@ -119,15 +155,30 @@ namespace MUTLoader
             }
         }
 
-        private void PlayerManager_OnClosed(object sender, EventArgs e)
+        /// <summary>
+        ///     Called when window is closed in normal flow.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closed(object sender, EventArgs e)
         {
-            //serialize players
+            var text = Text ? 1 : 0;
+            var settings = new List<int> {_delay, text};
+            //serialize players and settings
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("SavedPlayers.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, Players);
+            stream = new FileStream("Settings.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, settings);
+            stream = new FileStream("Number.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, _myNumber);
             stream.Close();
         }
 
+        /// <summary>
+        ///     Logic for removing player from list of PlayerInfo items.
+        /// </summary>
+        /// <param name="id">ID of player to remove.</param>
         private static void RemovePlayer(int id)
         {
             var success = false;
@@ -168,6 +219,11 @@ namespace MUTLoader
             }
         }
 
+        /// <summary>
+        ///     Called when Remove button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemovePlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -196,6 +252,11 @@ namespace MUTLoader
             }
         }
 
+        /// <summary>
+        ///     Activated when View Players button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ViewPlayersButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -210,6 +271,11 @@ namespace MUTLoader
             MessageBox.Show(sb.ToString(), "Players");
         }
 
+        /// <summary>
+        ///     Activated when Help button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HelpButtonClick(object sender, RoutedEventArgs e)
         {
             var msg = new StringBuilder();
@@ -232,12 +298,22 @@ namespace MUTLoader
             MessageBox.Show(msg.ToString(), "Help");
         }
 
+        /// <summary>
+        ///     Activated when Stop button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StopButton_OnClickButtonClick(object sender, RoutedEventArgs e)
         {
             _again = false;
             ExecuteButton.IsEnabled = true;
         }
 
+        /// <summary>
+        ///     Activated when Change refresh rate button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DelayButton_OnClick(object sender, RoutedEventArgs e)
         {
             var response = Interaction.InputBox(
@@ -270,6 +346,11 @@ namespace MUTLoader
             }
         }
 
+        /// <summary>
+        ///     Activated when Modify player button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ModifyPlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -278,7 +359,9 @@ namespace MUTLoader
                 sb.Append(p + "\n");
             }
             var response =
-                Interaction.InputBox(string.Format("What is the ID of the player that you want to change the max price for? \n\n {0}", sb),
+                Interaction.InputBox(
+                    string.Format("What is the ID of the player that you want to change the max price for? \n\n {0}",
+                        sb),
                     "Remove");
 
             if (response.Equals(""))
@@ -298,6 +381,10 @@ namespace MUTLoader
             }
         }
 
+        /// <summary>
+        ///     Logic for modifying a player in list of PlayerInfo items.
+        /// </summary>
+        /// <param name="id">ID of player to modify.</param>
         private static void ModifyPlayer(int id)
         {
             var success = false;
@@ -316,8 +403,9 @@ namespace MUTLoader
             if (success)
             {
                 var result =
-                    Interaction.InputBox(string.Format("{0} {1} current max price is {2:n0}.  What price should this be changed to? Do not add commas.",
-                                        modified.OVR, modified.name, modified.MaxPrice),"Change price");
+                    Interaction.InputBox(string.Format(
+                        "{0} {1} current max price is {2:n0}.  What price should this be changed to? Do not add commas.",
+                        modified.OVR, modified.name, modified.MaxPrice), "Change price");
                 if (result == "")
                 {
                     return;
@@ -331,7 +419,8 @@ namespace MUTLoader
                     modified.MaxPrice = parsed;
                     Players.Add(modified);
                     MessageBox.Show(
-                        string.Format("Modified {1} {2} price to {0:n0}!", modified.MaxPrice, modified.OVR, modified.name));
+                        string.Format("Modified {1} {2} price to {0:n0}!", modified.MaxPrice, modified.OVR,
+                            modified.name));
                 }
 
                 else
@@ -346,32 +435,38 @@ namespace MUTLoader
             }
         }
 
+        /// <summary>
+        ///     Activated when Text button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var message = Text ? "Texting is currently ON.  Do you want to turn it OFF?" : "Texting is currently OFF.  Do you want to turn it ON?";
-
-            var result = MessageBox.Show(message,
-                    "Toggle Texting", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                Text = !Text;
-            }
+            Text = !Text;
+            TextChanged();
         }
 
+        /// <summary>
+        ///     Returns the last player in the list's info.
+        /// </summary>
+        /// <returns>PlayerInfo item that is last players.</returns>
         public static PlayerInfo LastPlayerInfo()
         {
             return Players.Count > 0 ? Players[Players.Count - 1] : null;
         }
 
+        /// <summary>
+        ///     Helper method to send text.
+        /// </summary>
         public static void SendText()
         {
             _again = false;
             try
             {
                 var text = MessageResource.Create(
-                        to: new PhoneNumber(MY_NUMBER),
-                        from: new PhoneNumber(TWILIO_NUMBER),
-                        body: TextStringBuilder.ToString());
+                    new PhoneNumber(_myNumber),
+                    from: new PhoneNumber(TWILIO_NUMBER),
+                    body: TextStringBuilder.ToString());
                 MessageBox.Show(string.Format("Success!{0}{0}{1}", Environment.NewLine, text.Body));
             }
             catch (Exception ex)
@@ -379,5 +474,95 @@ namespace MUTLoader
                 MessageBox.Show(string.Format("Error!{0}{0}{1}", Environment.NewLine, ex));
             }
         }
+
+        /// <summary>
+        ///     Activated when Change Number button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NumberButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var newNumber =
+                Interaction.InputBox(string.Format("Your current phone number to receive text message alerts is: {0}." +
+                                                   "{1}{1}What number would you like to receive text message alerts to when a player is available for under your max price?  " +
+                                                   "{1}{1}You may add dashes/parentheses or omit them, but please do not add the +1 at the start of the number, as it is added for you.",
+                    _myNumber, Environment.NewLine), "Change number");
+            if (newNumber == "")
+            {
+                return;
+            }
+
+            if (newNumber.Contains("-"))
+            {
+                newNumber = newNumber.Replace("-", "");
+            }
+
+            if (newNumber.Contains("("))
+            {
+                newNumber = newNumber.Replace("(", "");
+            }
+
+            if (newNumber.Contains(")"))
+            {
+                newNumber = newNumber.Replace(")", "");
+            }
+
+            long parsed;
+            if (long.TryParse(newNumber, out parsed))
+            {
+                _myNumber = "+1" + parsed;
+            }
+
+            else
+            {
+                MessageBox.Show("Please use a valid number!", "Error");
+            }
+        }
+
+        /// <summary>
+        ///     Method for handling Text attribute changing.
+        /// </summary>
+        private void TextChanged()
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("TextDisplay"));
+            }
+        }
+
+        /// <summary>
+        ///     Activated when Reset Settings button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResetSettings_OnClick(object sender, RoutedEventArgs e)
+        {
+            var response = MessageBox.Show("Are you sure you you want to reset all settings?", "Warning",
+                MessageBoxButton.YesNo);
+            if (response == MessageBoxResult.Yes)
+            {
+                _delay = 30000;
+                Text = false;
+                TextChanged();
+                _myNumber = "+1";
+            }
+        }
+
+        /// <summary>
+        ///     Activated when Reset Players button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResetPlayers_OnClick(object sender, RoutedEventArgs e)
+        {
+            var response = MessageBox.Show("Are you sure you you want to reset all player info?", "Warning",
+                MessageBoxButton.YesNo);
+            if (response == MessageBoxResult.Yes)
+            {
+                Players = new List<PlayerInfo>();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

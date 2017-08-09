@@ -3,10 +3,7 @@ C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\b
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\MUTLoader.application
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\MUTLoader.exe
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\MUTLoader.pdb
-C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\JWT.dll
-C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Newtonsoft.Json.dll
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Twilio.dll
-C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Newtonsoft.Json.xml
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Twilio.xml
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\PlayerManager.baml
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\PlayerManager.g.cs
@@ -20,3 +17,6 @@ C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\o
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\MUTLoader.exe
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\MUTLoader.pdb
 C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\obj\Release\MUTLoader.csprojResolveAssemblyReference.cache
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\JWT.dll
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Newtonsoft.Json.dll
+C:\Users\jantetomaso\Documents\Visual Studio 2013\Projects\MUTLoader\MUTLoader\bin\Release\Newtonsoft.Json.xml

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using SHDocVw;
+
 namespace MUTLoader
 {
     [Serializable]
@@ -16,7 +17,14 @@ namespace MUTLoader
         public int MaxPrice;
         public string name;
         public int OVR;
-        
+
+        /// <summary>
+        ///     Public constructor.
+        /// </summary>
+        /// <param name="OVR">Player overall.</param>
+        /// <param name="name">Player name.</param>
+        /// <param name="ID">Player ID.</param>
+        /// <param name="MaxPrice">Max price willing to pay.</param>
         public PlayerInfo(int OVR, string name, int ID, int MaxPrice)
         {
             this.OVR = OVR;
@@ -25,13 +33,9 @@ namespace MUTLoader
             this.MaxPrice = MaxPrice;
         }
 
-        public PlayerInfo()
-        {
-            OVR = 0;
-            name = "no one";
-            ID = 0;
-        }
-
+        /// <summary>
+        ///     Method for check the price from the .json file.
+        /// </summary>
         public void PriceCheck()
         {
             var regexPattern = new Regex(@"\d\d?\d?\d?\d?\d?\d?\d?");
@@ -60,7 +64,7 @@ namespace MUTLoader
                     if (PlayerManager.Text)
                     {
                         PlayerManager.TextStringBuilder.Append(string.Format("{0}{1}", message, Environment.NewLine));
-                        }
+                    }
                     else
                     {
                         SystemSounds.Asterisk.Play();
@@ -72,15 +76,16 @@ namespace MUTLoader
                 {
                     PlayerManager.SendText();
                 }
-
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
             }
-            
         }
 
+        /// <summary>
+        ///     Method to connect to Internet Explorer for player's price .json file.
+        /// </summary>
         public void Connect()
         {
             ie = new InternetExplorerMedium();
@@ -89,9 +94,12 @@ namespace MUTLoader
             Process.Start("MUTLoadEnter.exe");
             Thread.Sleep(500); // sleep to hit enter
             PriceCheck();
-
         }
 
+        /// <summary>
+        ///     ToString override method for PlayerInfo.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("{0} OVR {1}, ID = {2}, Max Price = {3:n0}", OVR, name, ID, MaxPrice);

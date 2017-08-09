@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MUTLoader" Height="300" Width="350"
         WindowStartupLocation="CenterScreen"
-        Closed="PlayerManager_OnClosed">
+        Closed="Window_Closed">
     <TabControl>
         <TabItem Header ="Sniper">
             <Grid>
@@ -159,11 +159,34 @@
                         Click="HelpButtonClick"></Button>
 
                 <Button x:Name ="TextButton"  Grid.Column="0" Grid.Row="1" 
-                        Content="Text Toggle"
+                        Content ="{Binding Path=TextDisplay}" 
                         Width="110"
                         HorizontalAlignment="Center"
                         Height="25"
                         Click="TextButton_OnClick"></Button>
+
+                <Button x:Name ="NumberButton"  Grid.Column="1" Grid.Row="1" 
+                        Content="Change number"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="NumberButton_OnClick"></Button>
+
+                <Button x:Name ="ResetSettings"  Grid.Column="1" Grid.Row="2" 
+                        Content="Reset settings"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="ResetSettings_OnClick"></Button>
+
+                <Button x:Name ="ResetPlayers"  Grid.Column="0" Grid.Row="2" 
+                        Content="Reset players"
+                        Width="110"
+                        HorizontalAlignment="Center"
+                        Height="25"
+                        Click="ResetPlayers_OnClick"></Button>
+
+
             </Grid>
         </TabItem>
         
