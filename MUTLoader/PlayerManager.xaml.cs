@@ -77,8 +77,8 @@ namespace MUTLoader
         /// <summary>
         ///     Called when Go Button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void ExecuteButton_OnClick(object sender, RoutedEventArgs e)
         {
             _again = true;
@@ -126,8 +126,8 @@ namespace MUTLoader
         /// <summary>
         ///     Called when Add button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void AddPlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             int parsed;
@@ -158,8 +158,8 @@ namespace MUTLoader
         /// <summary>
         ///     Called when window is closed in normal flow.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void Window_Closed(object sender, EventArgs e)
         {
             var text = Text ? 1 : 0;
@@ -222,8 +222,8 @@ namespace MUTLoader
         /// <summary>
         ///     Called when Remove button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void RemovePlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -255,8 +255,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when View Players button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void ViewPlayersButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -274,8 +274,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Help button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void HelpButtonClick(object sender, RoutedEventArgs e)
         {
             var msg = new StringBuilder();
@@ -301,8 +301,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Stop button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void StopButton_OnClickButtonClick(object sender, RoutedEventArgs e)
         {
             _again = false;
@@ -312,8 +312,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Change refresh rate button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void DelayButton_OnClick(object sender, RoutedEventArgs e)
         {
             var response = Interaction.InputBox(
@@ -349,8 +349,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Modify player button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void ModifyPlayerButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -438,8 +438,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Text button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void TextButton_OnClick(object sender, RoutedEventArgs e)
         {
             Text = !Text;
@@ -478,8 +478,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Change Number button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void NumberButton_OnClick(object sender, RoutedEventArgs e)
         {
             var newNumber =
@@ -533,8 +533,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Reset Settings button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void ResetSettings_OnClick(object sender, RoutedEventArgs e)
         {
             var response = MessageBox.Show("Are you sure you you want to reset all settings?", "Warning",
@@ -551,8 +551,8 @@ namespace MUTLoader
         /// <summary>
         ///     Activated when Reset Players button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Not used.</param>
+        /// <param name="e">Not used.</param>
         private void ResetPlayers_OnClick(object sender, RoutedEventArgs e)
         {
             var response = MessageBox.Show("Are you sure you you want to reset all player info?", "Warning",
